@@ -7,3 +7,4 @@ services:
     restart: always
     volumes:
       - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+      - ./haproxy_map:/usr/local/etc/haproxy/token.map
