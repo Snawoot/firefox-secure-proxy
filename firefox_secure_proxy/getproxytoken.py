@@ -24,6 +24,9 @@ def main():
     print("Proxy-Authorization: %s %s" % (proxy_token_data["token_type"],
                                           proxy_token_data["access_token"]))
     utils.update_file(os.path.join(out_dir, 'proxy_token'), json.dumps(proxy_token_data))
+    haproxy_map = "proxy_auth_header %s %s" % (proxy_token_data["token_type"],
+                                               proxy_token_data["access_token"]))
+    utils.update_file(os.path.join(out_dir, 'haproxy_map'), haproxy_map)
         
 
 if __name__ == '__main__':
