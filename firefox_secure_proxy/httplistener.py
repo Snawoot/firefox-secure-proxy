@@ -83,6 +83,7 @@ class HttpListener(BaseListener):  # pylint: disable=too-many-instance-attribute
                 self._timeout)
             auth_header = self._auth_header()
             req = await reader.readline()
+            print("req=", req)
             if not req:
                 return
             dst_writer.write(req)
