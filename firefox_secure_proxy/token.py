@@ -3,6 +3,7 @@ import urllib.error
 import json
 import codecs
 import random
+import time
 
 from oic.oic import Client
 from oic.utils.authn.client import CLIENT_AUTHN_METHOD
@@ -84,4 +85,5 @@ def get_proxy_token(refresh_token_data, *,
         coding = coding if coding is not None else 'utf-8-sig'
         decoder = codecs.getreader(coding)(resp)
         res = json.load(decoder)
+    res["received_at"] = int(time.time())
     return res
