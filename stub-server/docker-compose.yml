@@ -1,0 +1,9 @@
+version: '3'
+services:
+  haproxy:
+    image: haproxy
+    ports:
+    - "8080:8080"
+    restart: always
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
