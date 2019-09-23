@@ -5,6 +5,7 @@ import json
 import os.path
 
 from . import token
+from . import utils
 
 
 def main():
@@ -22,8 +23,7 @@ def main():
     proxy_token_data = token.get_proxy_token(refresh_token_data)
     print("Proxy-Authorization: %s %s" % (proxy_token_data["token_type"],
                                           proxy_token_data["access_token"]))
-    with open(os.path.join(out_dir, 'proxy_token'), 'w') as f:
-        json.dump(proxy_token_data, f)
+    utils.update_file(os.path.join(out_dir, 'proxy_token'), json.dumps(proxy_token_data))
         
 
 if __name__ == '__main__':
