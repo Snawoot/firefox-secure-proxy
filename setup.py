@@ -20,11 +20,13 @@ setup(name='firefox_secure_proxy',
       ],
       install_requires=[
           'oic',
+          'sdnotify',
       ],
       entry_points={
           'console_scripts': [
               'fxsp-login=firefox_secure_proxy.login:main',
               'fxsp-getproxytoken=firefox_secure_proxy.getproxytoken:main',
+              'fxsp-httpstub=firefox_secure_proxy.httpstub:main',
           ],
       },
       classifiers=[
