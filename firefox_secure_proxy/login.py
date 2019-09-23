@@ -39,9 +39,7 @@ def main():
     print("")
     print(login_url)
     rp_url = input("Please paste redirect URL:").strip()
-    print("rp_url=", repr(rp_url))
     aresp = client.parse_response(AuthorizationResponse, info=rp_url, sformat="urlencoded")
-    print("aresp=", repr(aresp))
     args = {
         "code": aresp["code"],
         "client_id": CLIENT_ID,
