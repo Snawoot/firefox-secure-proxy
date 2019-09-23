@@ -24,6 +24,7 @@ setup(name='firefox_secure_proxy',
       entry_points={
           'console_scripts': [
               'fxsp-login=firefox_secure_proxy.login:main',
+              'fxsp-getproxytoken=firefox_secure_proxy.getproxytoken:main',
           ],
       },
       classifiers=[

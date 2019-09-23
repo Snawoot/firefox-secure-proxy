@@ -1,3 +1,9 @@
+import urllib.request
+import urllib.error
+import json
+import codecs
+import random
+
 from oic.oic import Client
 from oic.utils.authn.client import CLIENT_AUTHN_METHOD
 from oic import rndstr
@@ -45,3 +51,37 @@ def get_refresh_token(*, user_agent=constants.USER_AGENT):
                                           authn_method=None,
                                           http_args={"headers": {"User-Agent": user_agent}})
     return resp.to_dict()
+
+def get_proxy_token(refresh_token_data, *,
+                    user_agent=constants.USER_AGENT,
+                    scope=constants.FXA_PROXY_SCOPE,
+                    resource=constants.DEFAULT_PROXY_URL,
+                    ttl=constants.FXA_EXP_TOKEN_TIME,
+                    timeout=10.):
+    client = Client(client_authn_method=None)
+    provider_info = client.provider_config(constants.FXA_PROVIDER_URL)
+    token_endpoint = client.token_endpoint
+    #return resp.to_dict()
+
+    http_req = urllib.request.Request(
+        token_endpoint,
+        data=json.dumps({
+            "client_id": constants.CLIENT_ID,
+            "grant_type": "refresh_token",
+            "refresh_token": refresh_token_data["refresh_token"],
+            "scope": scope,
+            "ttl": ttl,
+            "ppid_seed": random.randrange(1024),
+            "resource": resource,
+        }).encode('ascii'),
+        headers={
+            "User-Agent": user_agent,
+            "Content-Type": "application/json",
+        }
+    )
+    with urllib.request.urlopen(http_req, None, timeout) as resp:
+        coding = resp.headers.get_content_charset()
+        coding = coding if coding is not None else 'utf-8-sig'
+        decoder = codecs.getreader(coding)(resp)
+        res = json.load(decoder)
+    return res

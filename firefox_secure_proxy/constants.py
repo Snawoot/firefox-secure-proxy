@@ -7,3 +7,4 @@ FXA_PROFILE_SCOPE = "profile"
 FXA_PROXY_SCOPE = "https://identity.mozilla.com/apps/secure-proxy"
 FXA_REDIRECT_URL = "https://cb7cbf5bedba243279adcd23bc6b88de7a304388.extensions.allizom.org/"
 DEFAULT_PROXY_URL = "https://firefox.factor11.cloudflareclient.com:2486"
+FXA_EXP_TOKEN_TIME = 86400
