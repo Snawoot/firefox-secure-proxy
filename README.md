@@ -9,4 +9,4 @@ Standalone wrapper for [Firefox Secure Proxy](https://private-network.firefox.co
 3. Update proxy token with command `fxsp-getproxytoken`.
 4. Run HTTP stub proxy server based on haproxy. There is docker-compose recipe in `stub_server` directory. Get into it, copy file `~/.config/haproxy_maps` into it and run `docker-compose up`. Local proxy will be running on port 8080, wrapping and authenticating connections to Firefox Secure Proxy.
 
-**TBD**: invoke `fxsp-getproxytoken` and reload haproxy maps periodically in order to keep proxy token up to date. For now it is left as an exercise for reader.
+**TBD**: invoke `fxsp-getproxytoken` and reload haproxy maps periodically in order to keep proxy token up to date. For now it is left as an exercise to reader.
