@@ -2,8 +2,6 @@
 
 import urllib.request
 import urllib.error
-import json
-import codecs
 
 from oic.oic import Client
 from oic.utils.authn.client import CLIENT_AUTHN_METHOD
@@ -11,12 +9,14 @@ from oic import rndstr
 from oic.oic.message import AuthorizationResponse, RegistrationResponse
 
 from . import constants
+from . import utils
+
 
 def get_token(*, user_agent=constants.USER_AGENT):
     client = Client(client_authn_method=None)
     client.store_registration_info(RegistrationResponse(client_id=constants.CLIENT_ID))
     provider_info = client.provider_config(constants.FXA_PROVIDER_URL)
-    ch_args, cv = client.add_code_challenge()
+    ch_args, cv = make_verifier()
     session = {
         "state": rndstr(),
         "nonce": rndstr(),
@@ -48,7 +48,7 @@ def get_token(*, user_agent=constants.USER_AGENT):
     resp = client.do_access_token_request(state=aresp["state"],
                                           request_args=args,
                                           authn_method=None,
-                                          http_args={"headers": { "User-Agent": user_agent}})
+                                          http_args={"headers": {"User-Agent": user_agent}})
     return resp
 
 def main():
