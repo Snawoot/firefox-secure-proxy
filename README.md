@@ -10,3 +10,8 @@ Standalone wrapper for [Firefox Secure Proxy](https://private-network.firefox.co
 4. Run HTTP stub proxy server based on haproxy. There is docker-compose recipe in `stub_server` directory. Get into it, copy file `~/.config/haproxy_maps` into it and run `docker-compose up`. Local proxy will be running on port 8080, wrapping and authenticating connections to Firefox Secure Proxy.
 
 **TBD**: invoke `fxsp-getproxytoken` and reload haproxy maps periodically in order to keep proxy token up to date. For now it is left as an exercise to reader.
+
+## See also
+
+* [transocks](https://github.com/cybozu-go/transocks) - transparent proxy adapter which can be used to redirect network traffic into HTTP/SOCKS5 proxy on gateway or a single Linux host. Compatible with firefox-secure-proxy.
+* [python-proxy](https://github.com/qwj/python-proxy) - HTTP/Socks4/Socks5/Shadowsocks/ShadowsocksR/SSH/Redirect/Pf TCP/UDP asynchronous tunnel proxy implemented in Python3 asyncio. Can be used to wrap firefox-secure-proxy to SOCKS5 and other protocols.
