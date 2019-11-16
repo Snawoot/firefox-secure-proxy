@@ -14,7 +14,7 @@ Standalone wrapper for [Firefox Secure Proxy](https://private-network.firefox.co
 Proxy access tokens requested by firefox-secure-proxy are valid for 24 hours. In order to update it run in following commands in `stub-server` directory:
 
 ```sh
-cp -v ~/.config/haproxy_maps .
+cp -v ~/.config/fxsp/haproxy_map .
 docker-compose kill -s HUP haproxy
 ```
 
