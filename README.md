@@ -7,11 +7,11 @@ Standalone wrapper for [Firefox Secure Proxy](https://private-network.firefox.co
 1. Install `firefox-secure-proxy` package. Use command `pip3 install firefox-secure-proxy` to install package from PyPI or run: `pip3 install .` within source directory. Python 3.5+ is required.
 2. Login into Firefox Accounts. Run `fxsp-login` and follow instructions on screen. It's OK if OAuth2 redirected URL is dead, wait for it to bail out and just copy its address into console.
 3. Update proxy token with command `fxsp-getproxytoken`.
-4. Run HTTP stub proxy server based on haproxy. There is docker-compose recipe in [`stub-server`](https://github.com/Snawoot/firefox-secure-proxy/tree/master/stub-server) directory. Get into it, copy file `~/.config/fxsp/haproxy_maps` into it and run `docker-compose up`. Local proxy will be running on port 8080, wrapping and authenticating connections to Firefox Secure Proxy.
+4. Run HTTP stub proxy server based on haproxy. There is docker-compose recipe in [**stub-server**](https://github.com/Snawoot/firefox-secure-proxy/tree/master/stub-server) directory. Get into it, copy file `~/.config/fxsp/haproxy_maps` into it and run `docker-compose up`. Local proxy will be running on port 8080, wrapping and authenticating connections to Firefox Secure Proxy.
 
 ### Updating proxy access token
 
-Proxy access tokens requested by firefox-secure-proxy are valid for 24 hours. In order to update it run in following commands in `stub-server` directory:
+Proxy access tokens requested by firefox-secure-proxy are valid for 24 hours. In order to update it run in following commands in your local `stub-server` directory:
 
 ```sh
 cp -v ~/.config/fxsp/haproxy_map .
