@@ -7,7 +7,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()  # pylint: disable=invalid-name
 
 setup(name='firefox_secure_proxy',
-      version='1.0.2',
+      version='1.0.3',
       description='Standalone wrapper for Firefox Secure Proxy',
       url='https://github.com/Snawoot/firefox-secure-proxy',
       author='Vladislav Yarmak',
