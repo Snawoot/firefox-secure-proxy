@@ -20,6 +20,38 @@ docker-compose kill -s HUP haproxy
 
 These actions can be scheduled to be performed automatically. Running haproxy server will be reloaded with no downtime.
 
+## Synopsis
+
+```
+$ fxsp-login --help
+usage: fxsp-login [-h] [-d DATADIR]
+
+Performs login into Firefox services and retrieves permanent authentication
+token, which is used to refresh proxy service token
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DATADIR, --datadir DATADIR
+                        data directory location (default:
+                        /home/user/.config/fxsp)
+```
+
+```
+$ fxsp-getproxytoken --help
+usage: fxsp-getproxytoken [-h] [-d DATADIR] [-a AGE]
+
+Retrieves or updates proxy service token using persistent Firefox refresh
+token (login token)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DATADIR, --datadir DATADIR
+                        data directory location (default:
+                        /home/user/.config/fxsp)
+  -a AGE, --age AGE     update token if it's age greater than AGE seconds
+                        (default: 0)
+```
+
 ## See also
 
 * [transocks](https://github.com/cybozu-go/transocks) - transparent proxy adapter which can be used to redirect network traffic into HTTP/SOCKS5 proxy on gateway or a single Linux host. Compatible with firefox-secure-proxy.
