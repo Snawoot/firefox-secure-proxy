@@ -1,6 +1,6 @@
 # firefox-secure-proxy
 
-Project is archived because beta extension API has been disabled and newer API has severe limitations. See [hola-proxy-list](https://github.com/Snawoot/hola-proxy-list) for alternative.
+**NOTICE:** Project is archived because beta extension API has been disabled and newer API has severe limitations. See [hola-proxy-list](https://github.com/Snawoot/hola-proxy-list) for alternative.
 
 Standalone wrapper for [Firefox Secure Proxy](https://private-network.firefox.com/). Offers plain HTTP proxy interface for all compatible applications.
 
